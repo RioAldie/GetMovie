@@ -56,14 +56,10 @@ const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 const theme = createTheme();
 
 export default function Body() {
-   const [expanded, setExpanded] = React.useState(false);
-
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
-  };
+   
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
+    
+  <>
       <main>
         {/* Hero unit */}
         <Box
@@ -97,20 +93,25 @@ export default function Body() {
             </Stack>
           </Container>
         </Box>
-        <Container sx={{ py: 8 }} maxWidth="md">
-          {/* End hero unit */}
-          <Grid container spacing={4}>
-            {cards.map((card) => (
-                <Grid item key={card} xs={12} sm={6} md={4}>
-                <MovieItem card={card}/>
+        <Box sx={{
+            bgcolor: 'background.paper',
+            pt: 8,
+            pb: 6,
+          }}>
+            <Container sx={{ width:'100%', py: 8 }} maxWidth="md">
+                {/* End hero unit */}
+                <Grid container spacing={4}>
+                    {cards.map((card) => (
+                        <Grid item key={card} xs={12} sm={6} md={6} >
+                        <MovieItem card={card}/>
+                        </Grid>
+                    ))}
                 </Grid>
-            ))}
-          </Grid>
-        </Container>
-      </main>
-      {/* Footer */}
+            </Container>
+        </Box>
+        
+      </main>  
     <Footer/>
-      {/* End footer */}
-    </ThemeProvider>
+    </>
   );
 }
