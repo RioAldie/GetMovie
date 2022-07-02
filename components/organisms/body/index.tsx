@@ -23,7 +23,9 @@ import Link from '@mui/material/Link';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Avatar, CardHeader, styled } from '@mui/material';
 import MovieItem from '../../moleculs/Movieitem';
+import Image from 'next/image';
 import Footer from '../footer';
+import Sponsor from '../sponsor';
 
 function Copyright() {
   return (
@@ -70,14 +72,17 @@ export default function Body() {
           }}
         >
           <Container maxWidth="sm">
+            <Box>
+                <Image src={'/image/movie-thum.png'} width={800} height={488}/>
+            </Box>
             <Typography
               component="h1"
               variant="h2"
               align="center"
-              color="text.primary"
+              color="primary"
               gutterBottom
             >
-              Get Movie Favoritmu Sekarang juga
+              Get Movie Favoritmu Sekarang Juga
             </Typography>
             <Typography variant="h5" align="center" color="text.secondary" paragraph>
               Getmovie membantu kamu menemukan movie terbaru maupun movie classic terpopuler pada masanya, tidak hanya lokal tetapi juga movie mancanegara.
@@ -92,6 +97,7 @@ export default function Body() {
               <Button variant="outlined">List Movie</Button>
             </Stack>
           </Container>
+          <Sponsor/>
         </Box>
         <Box sx={{
             bgcolor: 'background.paper',

@@ -4,10 +4,10 @@ import Image from "next/image";
 
 const ButtonStyled = styled(Button)({
     textTransform: 'none',
-    fontSize: '18px',
+    fontSize: '16px',
     fontWeight: '600',
     color:'black',
-    height: '38px'
+    height: '36px'
 })
 export default function Navbar(){
     return(<>
