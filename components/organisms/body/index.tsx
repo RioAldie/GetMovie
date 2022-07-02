@@ -26,6 +26,8 @@ import MovieItem from '../../moleculs/Movieitem';
 import Image from 'next/image';
 import Footer from '../footer';
 import Sponsor from '../sponsor';
+import { GetHDQualityMovie, GetLastedMovie, GetPopularMovies } from '../../../services/movie';
+import { MovieTypes } from '../../../services/data-types';
 
 function Copyright() {
   return (
@@ -58,7 +60,15 @@ const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 const theme = createTheme();
 
 export default function Body() {
-   
+    const [poster,setPoster] = React.useState([]);
+    const getPopularMovieList = React.useCallback( async ()=>{
+      const data = await GetHDQualityMovie();
+      setPoster(data);
+    },[GetHDQualityMovie]);
+  
+    React.useEffect(()=>{
+      getPopularMovieList();
+    },[])
   return (
     
   <>
@@ -107,10 +117,8 @@ export default function Body() {
             <Container sx={{ width:'100%', py: 8 }} maxWidth="md">
                 {/* End hero unit */}
                 <Grid container spacing={4}>
-                    {cards.map((card) => (
-                        <Grid item key={card} xs={12} sm={6} md={6} >
-                        <MovieItem card={card}/>
-                        </Grid>
+                    {poster.map((item: MovieTypes) =>(
+                        <MovieItem key={item.dowloadLink} name={item.options.name} image={item.poster}/>
                     ))}
                 </Grid>
             </Container>

@@ -6,7 +6,6 @@ export async function GetLastedMovie() {
     const URL = 'latest';
     const response =  await axios.get(`${ROOT_API}${API_VERSION}/${URL}`);
     const axiosResponse =  response.data;
-    console.log('Movie =>', axiosResponse);
     return axiosResponse.data;
 }
 export async function GetPopularMovies() {
@@ -14,5 +13,12 @@ export async function GetPopularMovies() {
     const response =  await axios.get(`${ROOT_API}${API_VERSION}/${URL}`);
     const axiosResponse =  response.data;
     console.log('Popular =>', axiosResponse.data);
+    return axiosResponse.data;
+}
+export async function GetHDQualityMovie() {
+    const URL = 'hd-quality';
+    const response =  await axios.get(`${ROOT_API}${API_VERSION}/${URL}`);
+    const axiosResponse =  response.data;
+    console.log('hd-quality =>', axiosResponse.data);
     return axiosResponse.data;
 }

@@ -5,7 +5,8 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { MovieTypes } from "../../../services/data-types";
 
 interface ExpandMoreProps extends IconButtonProps  {
     expand: boolean;
@@ -21,18 +22,22 @@ const ExpandMore = styled((props: ExpandMoreProps) => {
     }),
 }));
 interface MovieItemProps{
-    card: number
+    image: string,
+    name: string
 }
 const MovieItem = (props: MovieItemProps) =>{
     const [expanded, setExpanded] = useState(false);
-    const {card} = props;
+    const {image,name} = props;
 
     const handleExpandClick = () => {
         setExpanded(!expanded);
     };
+    useEffect(()=>{
+        console.log(image);
+    },[])
     return(
     <>
-        
+        <Grid item  xs={12} sm={6} md={6} >
               <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
               <CardHeader
                 action={
@@ -40,14 +45,14 @@ const MovieItem = (props: MovieItemProps) =>{
                     <MoreVertIcon />
                   </IconButton>
                 }
-                title="fast And Furious 6"
+                title={`${name}`}
                 subheader="September 14, 2016"
                 sx={{fontSize: '16px'}}
               />
               <CardMedia
                 component="img"
                 sx={{height:'500px'}}
-                image="/image/wedding-cake.jpg"
+                image={`${image}`}
                 alt="Paella dish"
               />
               <CardContent>
@@ -103,7 +108,7 @@ const MovieItem = (props: MovieItemProps) =>{
                 </CardContent>
               </Collapse>
               </Card>
-           
+              </Grid>
     </>
     )
 }
