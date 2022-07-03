@@ -127,6 +127,8 @@ export default function Body() {
                         category= {item.categories}
                         rating={item.rating}
                         downloadLink={item.downloadLink}
+                        quality={item.quality}
+                        datePublished={item.options.datePublished}
                         />
                     ))}
                 </Grid>

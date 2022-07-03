@@ -6,11 +6,14 @@ export interface MovieTypes{
         image: string,
         name: string,
         dateCreated: string,
+        datePublished: string,
         genre: string,
         director:[{
             name: string
         }],
     },
     categories: string,
-    rating: string
+    rating: string,
+    quality: string,
+    
 }

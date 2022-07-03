@@ -1,4 +1,4 @@
-import { Avatar, Button, Card, CardActions, CardContent, CardHeader, CardMedia, Grid, styled, Typography } from "@mui/material";
+import { Avatar, Button, Card, CardActions, CardContent, CardHeader, CardMedia, Checkbox, Grid, styled, Typography } from "@mui/material";
 import IconButton, { IconButtonProps } from '@mui/material/IconButton';
 import Collapse from '@mui/material/Collapse';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
@@ -7,6 +7,7 @@ import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useEffect, useState } from "react";
 import { MovieTypes } from "../../../services/data-types";
+import { Favorite, FavoriteBorder } from "@mui/icons-material";
 
 interface ExpandMoreProps extends IconButtonProps  {
     expand: boolean;
@@ -28,11 +29,13 @@ interface MovieItemProps{
     genre: string,
     category: string,
     rating: string,
-    downloadLink: string
+    downloadLink: string,
+    quality: string,
+    datePublished: string
 }
 const MovieItem = (props: MovieItemProps) =>{
     const [expanded, setExpanded] = useState(false);
-    const {image,name,date,genre,category,rating,downloadLink} = props;
+    const {image,name,date,genre,category,rating,downloadLink,quality,datePublished} = props;
 
     const handleExpandClick = () => {
         setExpanded(!expanded);
@@ -46,9 +49,9 @@ const MovieItem = (props: MovieItemProps) =>{
               <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
               <CardHeader
                 action={
-                  <IconButton aria-label="settings">
-                    <MoreVertIcon />
-                  </IconButton>
+                  <Typography variant="h6" color="primary">
+                    {quality}
+                  </Typography>
                 }
                 title={`${name}`}
                 subheader={`${date}`}
@@ -61,20 +64,26 @@ const MovieItem = (props: MovieItemProps) =>{
                 alt="Paella dish"
               />
               <CardContent>
-                <Typography variant="body2" color="text.secondary">
+                <Typography variant="body1" color="primary">
                   Genre : {genre}
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
+                <Typography variant="body2" color="yellow">
                   Rating : {rating}
                 </Typography>
                 
                 <Typography variant="body2" color="text.secondary">
                   Category : {category}
                 </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  Subtitle : English,Indonesia
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  Publised : {datePublished}
+                </Typography>
               </CardContent>
               <CardActions disableSpacing>
-                <IconButton aria-label="add to favorites">
-                  <FavoriteIcon />
+              <IconButton aria-label="add to favorites">
+                    <Checkbox  icon={<FavoriteBorder />} checkedIcon={<Favorite sx={{color: 'red'}} />} />
                 </IconButton>
                 <IconButton aria-label="share">
                   <ShareIcon />
