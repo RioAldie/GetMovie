@@ -62,9 +62,9 @@ const theme = createTheme();
 export default function Body() {
     const [poster,setPoster] = React.useState([]);
     const getPopularMovieList = React.useCallback( async ()=>{
-      const data = await GetHDQualityMovie();
+      const data = await GetPopularMovies();
       setPoster(data);
-    },[GetHDQualityMovie]);
+    },[GetPopularMovies]);
   
     React.useEffect(()=>{
       getPopularMovieList();
