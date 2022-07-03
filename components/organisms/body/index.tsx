@@ -118,7 +118,16 @@ export default function Body() {
                 {/* End hero unit */}
                 <Grid container spacing={4}>
                     {poster.map((item: MovieTypes) =>(
-                        <MovieItem key={item.dowloadLink} name={item.options.name} image={item.poster}/>
+                        <MovieItem 
+                        key={item.downloadLink} 
+                        name={item.options.name} 
+                        image={item.poster}
+                        date={item.options.dateCreated}
+                        genre={item.options.genre}
+                        category= {item.categories}
+                        rating={item.rating}
+                        downloadLink={item.downloadLink}
+                        />
                     ))}
                 </Grid>
             </Container>
