@@ -59,7 +59,7 @@ const MovieItem = (props: MovieItemProps) =>{
               />
               <CardMedia
                 component="img"
-                sx={{height:'500px'}}
+                sx={{height:'600px'}}
                 image={`${image}`}
                 alt="Paella dish"
               />

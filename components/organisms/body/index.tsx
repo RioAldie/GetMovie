@@ -26,8 +26,9 @@ import MovieItem from '../../moleculs/Movieitem';
 import Image from 'next/image';
 import Footer from '../footer';
 import Sponsor from '../sponsor';
-import { GetHDQualityMovie, GetLastedMovie, GetPopularMovies } from '../../../services/movie';
+import { GetHDQualityMovie, GetLastedMovie, GetMovieByGenre, GetPopularMovies, GetPopularMoviesDB } from '../../../services/movie';
 import { MovieTypes } from '../../../services/data-types';
+import { MovieCtx } from '../../../services/context/MovieContext';
 
 function Copyright() {
   return (
@@ -61,14 +62,38 @@ const theme = createTheme();
 
 export default function Body() {
     const [poster,setPoster] = React.useState([]);
+    const {action} = React.useContext(MovieCtx);
     const getPopularMovieList = React.useCallback( async ()=>{
       const data = await GetPopularMovies();
       setPoster(data);
     },[GetPopularMovies]);
-  
+    const getLastedMovieList = React.useCallback( async ()=>{
+      const data = await GetLastedMovie();
+      setPoster(data);
+    },[GetLastedMovie]);
+    const getHDrMovieList = React.useCallback( async ()=>{
+      const data = await GetHDQualityMovie();
+      setPoster(data);
+    },[GetHDQualityMovie]);
+    const GetMovieGenre = React.useCallback( async ()=>{
+      const data = await GetMovieByGenre();
+      setPoster(data);
+    },[GetMovieByGenre]);
+    const getPopularMovieListDB = React.useCallback( async ()=>{
+      const data = await GetPopularMoviesDB();
+      
+    },[GetPopularMoviesDB]);
+    const GetMovie = (action: string) =>{
+        if(action === 'popular'){
+          return getPopularMovieList();
+        }
+        if(action === 'terbaru'){
+          return getLastedMovieList();
+        }
+    }
     React.useEffect(()=>{
-      getPopularMovieList();
-    },[])
+      GetPopularMoviesDB();
+    },[action])
   return (
     
   <>
