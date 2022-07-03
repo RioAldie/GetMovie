@@ -13,7 +13,7 @@ const ButtonStyled = styled(Button)({
 })
 export default function Navbar(){
     return(<>
-        <AppBar position="relative" sx={{backgroundColor:'#100F0F'}}>
+        <AppBar position="sticky" sx={{backgroundColor:'#100F0F'}}>
         <Toolbar sx={{backgroundColor:'#100F0F',display:'flex',justifyContent:'space-between'}}>
           <Image src={"/image/gmovie-logo.png"} height={30} width={67}/>
           <Box sx={{display:'flex', alignItems:'center'}}>
