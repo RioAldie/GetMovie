@@ -1,4 +1,4 @@
-export interface MovieTypes{
+export interface PosterTypes{
     poster: string,
     downloadLink: string,
     id: string,
@@ -16,7 +16,7 @@ export interface MovieTypes{
     rating: string,
     quality: string,
 }
-export interface PosterTypes{
+export interface MovieTypes{
     adult: boolean,
     id: number,
     original_language: string,
@@ -26,6 +26,9 @@ export interface PosterTypes{
     poster_path: string,
     release_date: string,
     title: string,
-    vote_average: number,
-    vote_count: number
+    vote_average: number
+}
+export interface GenreTypes{
+    id: number,
+    name: string
 }

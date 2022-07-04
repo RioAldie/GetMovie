@@ -6,7 +6,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useEffect, useState } from "react";
-import { MovieTypes, PosterTypes } from "../../../services/data-types";
+import { MovieTypes } from "../../../services/data-types";
 import { Favorite, FavoriteBorder } from "@mui/icons-material";
 
 interface ExpandMoreProps extends IconButtonProps  {
@@ -22,15 +22,26 @@ const ExpandMore = styled((props: ExpandMoreProps) => {
       duration: theme.transitions.duration.shortest,
     }),
 }));
-
-const MovieItem = (props: MovieTypes) =>{
+interface PosterItemProps{
+    image: string,
+    name: string,
+    date: string,
+    genre: string,
+    category: string,
+    rating: string,
+    downloadLink: string,
+    quality: string,
+    datePublished: string
+}
+const PosterItem = (props: PosterItemProps) =>{
     const [expanded, setExpanded] = useState(false);
-    const {adult,id,original_language,original_title,overview,popularity,poster_path,release_date,title,vote_average} = props
+    const {image,name,date,genre,category,rating,downloadLink,quality,datePublished} = props;
 
     const handleExpandClick = () => {
         setExpanded(!expanded);
     };
     useEffect(()=>{
+        console.log(name);
     },[])
     return(
     <>
@@ -39,35 +50,35 @@ const MovieItem = (props: MovieTypes) =>{
               <CardHeader
                 action={
                   <Typography variant="h6" color="primary">
-              
+                    {quality}
                   </Typography>
                 }
-                title={`${''}`}
-                subheader={`${''}`}
+                title={`${name}`}
+                subheader={`${date}`}
                 sx={{fontSize: '16px'}}
               />
               <CardMedia
                 component="img"
                 sx={{height:'600px'}}
-                image={`http://image.tmdb.org/t/p/w500${poster_path}`}
+                image={`${image}`}
                 alt="Paella dish"
               />
               <CardContent>
                 <Typography variant="body1" color="primary">
-                  Genre : {''}
+                  Genre : {genre}
                 </Typography>
                 <Typography variant="body2" color="yellow">
-                  Rating : {''}
+                  Rating : {rating}
                 </Typography>
                 
                 <Typography variant="body2" color="text.secondary">
-                  Category : {''}
+                  Category : {category}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
                   Subtitle : English,Indonesia
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  Publised : {''}
+                  Publised : {datePublished}
                 </Typography>
               </CardContent>
               <CardActions disableSpacing>
@@ -90,9 +101,11 @@ const MovieItem = (props: MovieTypes) =>{
                 <CardContent>
                   <Typography paragraph>Download:</Typography>
                   <Typography paragraph sx={{color:'cyan',fontStyle:'italic',cursor:'pointer'}}>
-                   
+                    {downloadLink}
                   </Typography>
-                  
+                  <a href={`${downloadLink}`} target="_blank">
+                    <Button variant="contained">Download</Button>
+                  </a>
                 </CardContent>
               </Collapse>
               </Card>
@@ -101,4 +114,4 @@ const MovieItem = (props: MovieTypes) =>{
     )
 }
 
-export default MovieItem;
+export default PosterItem;

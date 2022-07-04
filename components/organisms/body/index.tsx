@@ -27,8 +27,9 @@ import Image from 'next/image';
 import Footer from '../footer';
 import Sponsor from '../sponsor';
 import { GetHDQualityMovie, GetLastedMovie, GetMovieByGenre, GetPopularMovies, GetPopularMoviesDB } from '../../../services/movie';
-import { MovieTypes } from '../../../services/data-types';
+import { MovieTypes, PosterTypes } from '../../../services/data-types';
 import { MovieCtx } from '../../../services/context/MovieContext';
+import PosterItem from '../../moleculs/Posteritem';
 
 function Copyright() {
   return (
@@ -62,6 +63,7 @@ const theme = createTheme();
 
 export default function Body() {
     const [poster,setPoster] = React.useState([]);
+    const [movies,setMovies] = React.useState([]);
     const {action} = React.useContext(MovieCtx);
     const getPopularMovieList = React.useCallback( async ()=>{
       const data = await GetPopularMovies();
@@ -81,7 +83,8 @@ export default function Body() {
     },[GetMovieByGenre]);
     const getPopularMovieListDB = React.useCallback( async ()=>{
       const data = await GetPopularMoviesDB();
-      
+      setMovies(data);
+      console.log('movie=>',data)
     },[GetPopularMoviesDB]);
     const GetMovie = (action: string) =>{
         if(action === 'popular'){
@@ -92,7 +95,8 @@ export default function Body() {
         }
     }
     React.useEffect(()=>{
-      GetPopularMoviesDB();
+      getPopularMovieList();
+      getPopularMovieListDB();
     },[action])
   return (
     
@@ -142,8 +146,8 @@ export default function Body() {
             <Container sx={{ width:'100%', py: 8 }} maxWidth="md">
                 {/* End hero unit */}
                 <Grid container spacing={4}>
-                    {poster.map((item: MovieTypes) =>(
-                        <MovieItem 
+                    {poster.map((item: PosterTypes) =>(
+                        <PosterItem 
                         key={item.downloadLink} 
                         name={item.options.name} 
                         image={item.poster}
@@ -157,6 +161,15 @@ export default function Body() {
                         />
                     ))}
                 </Grid>
+            </Container>
+            <Container sx={{ width:'100%', py: 8 }} maxWidth="md">
+              <Grid container spacing={4}>
+                {
+                  movies.map((item: MovieTypes)=>(
+                    <MovieItem key={item.id} adult={item.adult} id={item.id} original_language={item.original_language} original_title={item.original_title} overview={item.overview} popularity={item.popularity} poster_path={item.poster_path} release_date={item.release_date} title={item.title} vote_average={item.vote_average}/>
+                  ))
+                }
+              </Grid>
             </Container>
         </Box>
         

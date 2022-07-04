@@ -1,6 +1,10 @@
 import { Box, Button, Stack } from "@mui/material";
+import { useContext } from "react";
+import { MovieCtx } from "../../../services/context/MovieContext";
 
 export default function Sidebar(){
+    const { action, setAction } = useContext(MovieCtx);
+     
     return(
         <>
         <Box sx={{backgroundColor: 'background.paper'}} >

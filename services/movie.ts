@@ -22,7 +22,7 @@ export async function GetPopularMoviesDB() {
     const response =  await axios.get(`${ROOT_API2}${URL}?${API_KEY}`);
     const axiosResponse =  response.data;
     console.log('Popular =>', axiosResponse.results);
-    return axiosResponse.data;
+    return axiosResponse.results;
 }
 export async function GetHDQualityMovie() {
     const URL = 'hd-quality';
