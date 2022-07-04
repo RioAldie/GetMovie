@@ -73,14 +73,6 @@ export default function Body() {
       const data = await GetLastedMovie();
       setPoster(data);
     },[GetLastedMovie]);
-    const getHDrMovieList = React.useCallback( async ()=>{
-      const data = await GetHDQualityMovie();
-      setPoster(data);
-    },[GetHDQualityMovie]);
-    const GetMovieGenre = React.useCallback( async ()=>{
-      const data = await GetMovieByGenre();
-      setPoster(data);
-    },[GetMovieByGenre]);
     const getPopularMovieListDB = React.useCallback( async ()=>{
       const data = await GetPopularMoviesDB();
       setMovies(data);
@@ -133,7 +125,7 @@ export default function Body() {
               justifyContent="center"
             >
               <Button variant="contained">Movie Terbaru</Button>
-              <Button variant="outlined">List Movie</Button>
+              <Button variant="outlined" href='#download'>Download Movie</Button>
             </Stack>
           </Container>
           <Sponsor/>
@@ -143,7 +135,20 @@ export default function Body() {
             pt: 8,
             pb: 6,
           }}>
-            <Container sx={{ width:'100%', py: 8 }} maxWidth="md">
+             <Container sx={{ width:'100%', py: 8 }} maxWidth="md">
+              <Grid container spacing={4}>
+                {
+                  movies.map((item: MovieTypes)=>(
+                    <MovieItem key={item.id} adult={item.adult} id={item.id} original_language={item.original_language} original_title={item.original_title} overview={item.overview} popularity={item.popularity} poster_path={item.poster_path} release_date={item.release_date} title={item.title} vote_average={item.vote_average} genre={item.genre}/>
+                  ))
+                }
+              </Grid>
+            </Container>
+            
+            <Container sx={{ width:'100%', py: 8 }} maxWidth="md" id="download">
+            <Typography variant='h5' color={'primary'} sx={{mb: 10}}>
+              Download Movie
+            </Typography>
                 {/* End hero unit */}
                 <Grid container spacing={4}>
                     {poster.map((item: PosterTypes) =>(
@@ -162,15 +167,7 @@ export default function Body() {
                     ))}
                 </Grid>
             </Container>
-            <Container sx={{ width:'100%', py: 8 }} maxWidth="md">
-              <Grid container spacing={4}>
-                {
-                  movies.map((item: MovieTypes)=>(
-                    <MovieItem key={item.id} adult={item.adult} id={item.id} original_language={item.original_language} original_title={item.original_title} overview={item.overview} popularity={item.popularity} poster_path={item.poster_path} release_date={item.release_date} title={item.title} vote_average={item.vote_average}/>
-                  ))
-                }
-              </Grid>
-            </Container>
+           
         </Box>
         
       </main>  

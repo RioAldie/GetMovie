@@ -25,7 +25,7 @@ const ExpandMore = styled((props: ExpandMoreProps) => {
 
 const MovieItem = (props: MovieTypes) =>{
     const [expanded, setExpanded] = useState(false);
-    const {adult,id,original_language,original_title,overview,popularity,poster_path,release_date,title,vote_average} = props
+    const {adult,id,original_language,original_title,overview,popularity,poster_path,release_date,title,vote_average,genre} = props
 
     const handleExpandClick = () => {
         setExpanded(!expanded);
@@ -42,8 +42,8 @@ const MovieItem = (props: MovieTypes) =>{
               
                   </Typography>
                 }
-                title={`${''}`}
-                subheader={`${''}`}
+                title={`${title}`}
+                subheader={`${release_date}`}
                 sx={{fontSize: '16px'}}
               />
               <CardMedia
@@ -54,21 +54,22 @@ const MovieItem = (props: MovieTypes) =>{
               />
               <CardContent>
                 <Typography variant="body1" color="primary">
-                  Genre : {''}
+                  {original_title}
                 </Typography>
                 <Typography variant="body2" color="yellow">
-                  Rating : {''}
+                  Rating : {vote_average}
                 </Typography>
                 
-                <Typography variant="body2" color="text.secondary">
-                  Category : {''}
+                <Typography variant="body2" color="text.primary">
+                  Popularity : {popularity}
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  Subtitle : English,Indonesia
+                <Typography variant="body2" color="text.primary">
+                  Language : {original_language}
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  Publised : {''}
+                <Typography variant="body2" color="text.primary">
+                  Release Date : {release_date}
                 </Typography>
+                
               </CardContent>
               <CardActions disableSpacing>
               <IconButton aria-label="add to favorites">
@@ -88,11 +89,9 @@ const MovieItem = (props: MovieTypes) =>{
               </CardActions>
               <Collapse in={expanded} timeout="auto" unmountOnExit>
                 <CardContent>
-                  <Typography paragraph>Download:</Typography>
-                  <Typography paragraph sx={{color:'cyan',fontStyle:'italic',cursor:'pointer'}}>
-                   
-                  </Typography>
-                  
+                    <Typography variant="body2" color="text.secondary">
+                        {overview}
+                    </Typography>
                 </CardContent>
               </Collapse>
               </Card>

@@ -26,7 +26,8 @@ export interface MovieTypes{
     poster_path: string,
     release_date: string,
     title: string,
-    vote_average: number
+    vote_average: number,
+    genre: []
 }
 export interface GenreTypes{
     id: number,
