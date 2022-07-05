@@ -1,32 +1,25 @@
 import { Container, Grid, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { MovieTypes } from "../../../services/data-types";
-import { GetLatestMovieDB, GetMovieByGenreDB, GetPopularMoviesDB } from "../../../services/movie";
+import { GetMovieByGenreDB } from "../../../services/movie";
 import MovieItem from "../../moleculs/Movieitem";
 
-export default function Popular(){
+export default function Horror(){
     const [movies, setMovies] = useState([]);
-    const getPopularMovieList = React.useCallback( async ()=>{
-        const data = await GetPopularMoviesDB();
+    const getHorrorMovieList = React.useCallback( async ()=>{
+        const data = await GetMovieByGenreDB('27');
         setMovies(data);
-        getLatestMovieListDB();
-      },[GetPopularMoviesDB]);
-      const getLatestMovieListDB = React.useCallback( async ()=>{
-        const data = await GetLatestMovieDB();
-        
-        const newData = movies.concat(data);
-        setMovies(newData)
-        
-      },[GetLatestMovieDB]);
+        console.log('movie=>',data)
+      },[GetMovieByGenreDB]);
+
       useEffect(()=>{
-        getPopularMovieList();
-        
+        getHorrorMovieList();
       },[])
     return(
         <>
             <Container sx={{ width:'100%', py: 8 }} maxWidth="md" id='movies'>
              <Typography variant='h5' color={'primary'} sx={{mb: 10}}>
-              Movie Popular
+              Movie Action
             </Typography>
               <Grid container spacing={4}>
                 {

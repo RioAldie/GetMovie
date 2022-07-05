@@ -35,6 +35,12 @@ export async function GetLatestMovieDB() {
     const axiosResponse =  response.data;
     return axiosResponse.results;
 }
+export async function GetUpcomingMovieDB() {
+    const URL = 'upcoming';
+    const response =  await axios.get(`${ROOT_API2}${URL}?${API_KEY}`);
+    const axiosResponse =  response.data;
+    return axiosResponse.results;
+}
 export async function GetMovieByGenreDB(genre_id: string) {
     const GENRE = 'with_genres=';
     const response =  await axios.get(`${ROOT_API3}?${API_KEY}&${GENRE}${genre_id}`);

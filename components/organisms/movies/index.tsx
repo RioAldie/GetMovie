@@ -4,6 +4,7 @@ import Action from "./action";
 import Animation from "./animation";
 import Comedy from "./comedy";
 import Drama from "./drama";
+import Horror from "./horror";
 import Popular from "./popular";
 import Romance from "./romance";
 
@@ -27,6 +28,9 @@ const Movies = () =>{
         }
         if(action === 'romance'){
             return <Romance/>
+        }
+        if(action === 'horror'){
+            return <Horror/>
         }
     }
     // useEffect(()=>{

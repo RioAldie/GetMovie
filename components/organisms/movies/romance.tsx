@@ -16,7 +16,7 @@ export default function Romance(){
       },[])
     return(
         <>
-            <Container sx={{ width:'100%', py: 8 }} maxWidth="md">
+            <Container sx={{ width:'100%', py: 8 }} maxWidth="md" id='movies'>
              <Typography variant='h5' color={'primary'} sx={{mb: 10}}>
               Romance Movies
             </Typography>

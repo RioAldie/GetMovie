@@ -79,11 +79,7 @@ export default function Body() {
       setMovies(data);
       console.log('movie=>',data)
     },[GetPopularMoviesDB]);
-    const getLatestMovieListDB = React.useCallback( async ()=>{
-      const data = await GetLatestMovieDB();
-      setMovies(data);
-      console.log('movie=>',data)
-    },[GetLatestMovieDB]);
+   
     const GetMovie = (action: string) =>{
         if(action === 'popular'){
           return getPopularMovieList();
