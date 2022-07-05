@@ -40,9 +40,6 @@ const PosterItem = (props: PosterItemProps) =>{
     const handleExpandClick = () => {
         setExpanded(!expanded);
     };
-    useEffect(()=>{
-        console.log(name);
-    },[])
     return(
     <>
         <Grid item  xs={12} sm={6} md={6} >

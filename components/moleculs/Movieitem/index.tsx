@@ -1,13 +1,13 @@
 import { Avatar, Button, Card, CardActions, CardContent, CardHeader, CardMedia, Checkbox, Grid, styled, Typography } from "@mui/material";
 import IconButton, { IconButtonProps } from '@mui/material/IconButton';
 import Collapse from '@mui/material/Collapse';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
-import FavoriteIcon from '@mui/icons-material/Favorite';
+import StarIcon from '@mui/icons-material/Star';
 import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useEffect, useState } from "react";
 import { MovieTypes, PosterTypes } from "../../../services/data-types";
 import { Favorite, FavoriteBorder } from "@mui/icons-material";
+import VisibilityIcon from '@mui/icons-material/Visibility';
 
 interface ExpandMoreProps extends IconButtonProps  {
     expand: boolean;
@@ -56,12 +56,14 @@ const MovieItem = (props: MovieTypes) =>{
                 <Typography variant="body1" color="primary">
                   {original_title}
                 </Typography>
-                <Typography variant="body2" color="yellow">
+                <Typography variant="body1" color="yellow" sx={{display: 'flex', alignItems:'center'}}>
                   Rating : {vote_average}
+                  <StarIcon fontSize="small"/>
                 </Typography>
                 
-                <Typography variant="body2" color="text.primary">
-                  Popularity : {popularity}
+                <Typography variant="body1" color="text.primary" sx={{display: 'flex', alignItems:'center'}}>
+                  Views : {popularity} 
+                  <VisibilityIcon fontSize="small"/>
                 </Typography>
                 <Typography variant="body2" color="text.primary">
                   Language : {original_language}

@@ -12,24 +12,25 @@ import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton, { IconButtonProps } from '@mui/material/IconButton';
-import Collapse from '@mui/material/Collapse';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import ShareIcon from '@mui/icons-material/Share';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Link from '@mui/material/Link';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { Avatar, CardHeader, styled } from '@mui/material';
+import { Avatar, CardHeader, Fab, styled, Tooltip } from '@mui/material';
 import MovieItem from '../../moleculs/Movieitem';
 import Image from 'next/image';
 import Footer from '../footer';
 import Sponsor from '../sponsor';
-import { GetHDQualityMovie, GetLastedMovie, GetMovieByGenre, GetPopularMovies, GetPopularMoviesDB } from '../../../services/movie';
+import { GetHDQualityMovie, GetLastedMovie, GetLatestMovieDB, GetPopularMovies, GetPopularMoviesDB } from '../../../services/movie';
 import { MovieTypes, PosterTypes } from '../../../services/data-types';
 import { MovieCtx } from '../../../services/context/MovieContext';
 import PosterItem from '../../moleculs/Posteritem';
+import AddIcon from '@mui/icons-material/Add';
+import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
+import Action from '../movies/action';
+import Animation from '../movies/animation';
+import Movies from '../movies';
 
 function Copyright() {
   return (
@@ -78,6 +79,11 @@ export default function Body() {
       setMovies(data);
       console.log('movie=>',data)
     },[GetPopularMoviesDB]);
+    const getLatestMovieListDB = React.useCallback( async ()=>{
+      const data = await GetLatestMovieDB();
+      setMovies(data);
+      console.log('movie=>',data)
+    },[GetLatestMovieDB]);
     const GetMovie = (action: string) =>{
         if(action === 'popular'){
           return getPopularMovieList();
@@ -88,7 +94,6 @@ export default function Body() {
     }
     React.useEffect(()=>{
       getPopularMovieList();
-      getPopularMovieListDB();
     },[action])
   return (
     
@@ -101,8 +106,28 @@ export default function Body() {
             pt: 8,
             pb: 6,
           }}
-        >
-          <Container maxWidth="sm">
+        >     
+        <Button href='#hero'>
+              <Tooltip title="Add" arrow
+                    sx={{
+                        position: 'fixed',
+                        bottom: 20,
+                        md: 20,
+                        ml: '140%',
+                        mb: 3,
+                        display:{
+                            xs: 'flex',
+                            md: 'flex'
+                        }
+                    }}
+                    >
+                        <Fab aria-label="add" color="primary">
+                            <ArrowUpwardIcon/>
+                        </Fab>
+              </Tooltip>
+         </Button>
+          
+          <Container maxWidth="sm" id="hero">
             <Box>
                 <Image src={'/image/movie-thum.png'} width={800} height={488}/>
             </Box>
@@ -135,16 +160,7 @@ export default function Body() {
             pt: 8,
             pb: 6,
           }}>
-             <Container sx={{ width:'100%', py: 8 }} maxWidth="md">
-              <Grid container spacing={4}>
-                {
-                  movies.map((item: MovieTypes)=>(
-                    <MovieItem key={item.id} adult={item.adult} id={item.id} original_language={item.original_language} original_title={item.original_title} overview={item.overview} popularity={item.popularity} poster_path={item.poster_path} release_date={item.release_date} title={item.title} vote_average={item.vote_average} genre={item.genre}/>
-                  ))
-                }
-              </Grid>
-            </Container>
-            
+            <Movies/>
             <Container sx={{ width:'100%', py: 8 }} maxWidth="md" id="download">
             <Typography variant='h5' color={'primary'} sx={{mb: 10}}>
               Download Movie

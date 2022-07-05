@@ -17,10 +17,6 @@ export default function Navbar(){
         <Toolbar sx={{backgroundColor:'#100F0F',display:'flex',justifyContent:'space-between'}}>
           <Image src={"/image/gmovie-logo.png"} height={30} width={67}/>
           <Box sx={{display:'flex', alignItems:'center'}}>
-             <ButtonStyled variant="contained" sx={{display:{xs:'none', md:'flex'}}}>
-                <Image src={'/image/magnifying-glass-solid.svg'} height={18} width={18}/>
-                <Typography sx={{fontSize: '18px',fontWeight: '400',color:'black',ml:'6px'}}>Seacrh</Typography>
-             </ButtonStyled>
              <MenuIcon color="primary" sx={{display:{sm: 'block', md: 'none'}}}/>
           </Box>
          
