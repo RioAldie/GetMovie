@@ -1,24 +1,24 @@
 import { Container, Grid, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { MovieTypes } from "../../../services/data-types";
-import { GetMovieByGenreDB } from "../../../services/movie";
+import { GetMovieByGenreDB, GetUpcomingMovieDB } from "../../../services/movie";
 import MovieItem from "../../moleculs/Movieitem";
 
-export default function Animation(){
+export default function Upcoming(){
     const [movies, setMovies] = useState([]);
-    const getAnimationMovieList = React.useCallback( async ()=>{
-        const data = await GetMovieByGenreDB('16');
+    const getUpcomingMovieList = React.useCallback( async ()=>{
+        const data = await GetUpcomingMovieDB();
         setMovies(data);
-      },[GetMovieByGenreDB]);
+      },[GetUpcomingMovieDB]);
 
       useEffect(()=>{
-        getAnimationMovieList();
+        getUpcomingMovieList();
       },[])
     return(
         <>
             <Container sx={{ width:'100%', py: 8 }} maxWidth="md" id='movies'>
              <Typography variant='h5' color={'primary'} sx={{mb: 10}}>
-              Animation Movies
+              Movie Terbaru
             </Typography>
               <Grid container spacing={4}>
                 {

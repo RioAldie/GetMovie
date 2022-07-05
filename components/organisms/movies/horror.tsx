@@ -19,7 +19,7 @@ export default function Horror(){
         <>
             <Container sx={{ width:'100%', py: 8 }} maxWidth="md" id='movies'>
              <Typography variant='h5' color={'primary'} sx={{mb: 10}}>
-              Movie Action
+              Horror Movies
             </Typography>
               <Grid container spacing={4}>
                 {

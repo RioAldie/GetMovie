@@ -7,6 +7,7 @@ import Drama from "./drama";
 import Horror from "./horror";
 import Popular from "./popular";
 import Romance from "./romance";
+import Upcoming from "./upcoming";
 
 const Movies = () =>{
     const {action} = useContext(MovieCtx);
@@ -31,6 +32,9 @@ const Movies = () =>{
         }
         if(action === 'horror'){
             return <Horror/>
+        }
+        if(action === 'upcoming'){
+            return <Upcoming/>
         }
     }
     // useEffect(()=>{

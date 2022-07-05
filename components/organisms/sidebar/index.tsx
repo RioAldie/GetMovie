@@ -16,7 +16,7 @@ export default function Sidebar(){
                 <Button onClick={() => setAction('romance')} href="#movies" size="small">Romance</Button>
                 <Button onClick={() => setAction('horror')} href="#movies" size="small">Horror</Button>
                 <Button onClick={() => setAction('animation')} href="#movies" size="small">Animation</Button>
-                <Button href="#movies" size="small">Terbaru</Button>
+                <Button onClick={() => setAction('upcoming')} href="#movies" size="small">Terbaru</Button>
             </Stack>
         </Box>
             
