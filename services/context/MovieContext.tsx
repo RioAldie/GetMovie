@@ -10,16 +10,14 @@ type MovieContextValue={
     setAction: React.Dispatch<React.SetStateAction<string>>
 }
 const MovieCtxdeafultvalue:MovieContextValue = {
-    action: 'animation',
+    action: 'popular',
     setAction: state => {}
 }
 export const MovieCtx = createContext(MovieCtxdeafultvalue);
 export default function MovieCtxProvider( {children}:MovieProps){
     const [action, setAction] = useState(MovieCtxdeafultvalue.action);
 
-    useEffect(()=>{
-        setAction(MovieCtxdeafultvalue.action);
-    },[])
+    
     return(
         <>
             <MovieCtx.Provider value={{action, setAction}}>
