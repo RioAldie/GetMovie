@@ -100,7 +100,7 @@ const PosterItem = (props: PosterItemProps) =>{
                   <Typography paragraph sx={{color:'cyan',fontStyle:'italic',cursor:'pointer'}}>
                     {downloadLink}
                   </Typography>
-                  <a href={`${downloadLink}`} target="_blank">
+                  <a href={`${downloadLink}`} target="_blank" rel="noreferrer">
                     <Button variant="contained">Download</Button>
                   </a>
                 </CardContent>

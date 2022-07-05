@@ -69,25 +69,9 @@ export default function Body() {
     const getPopularMovieList = React.useCallback( async ()=>{
       const data = await GetPopularMovies();
       setPoster(data);
-    },[GetPopularMovies]);
-    const getLastedMovieList = React.useCallback( async ()=>{
-      const data = await GetLastedMovie();
-      setPoster(data);
-    },[GetLastedMovie]);
-    const getPopularMovieListDB = React.useCallback( async ()=>{
-      const data = await GetPopularMoviesDB();
-      setMovies(data);
-      console.log('movie=>',data)
-    },[GetPopularMoviesDB]);
+    },[]);
    
-    const GetMovie = (action: string) =>{
-        if(action === 'popular'){
-          return getPopularMovieList();
-        }
-        if(action === 'terbaru'){
-          return getLastedMovieList();
-        }
-    }
+ 
     React.useEffect(()=>{
       getPopularMovieList();
     },[action])

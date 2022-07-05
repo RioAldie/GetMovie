@@ -4,8 +4,8 @@ import { Box, Typography } from "@mui/material";
 export default function Footer(){
     return(<>
         <Box sx={{ bgcolor: 'background.paper', p: 6 }} component="footer">
-        <Typography variant="h6" align="center" gutterBottom>
-          Footer
+        <Typography variant="h6" align="center" gutterBottom color="text.primary">
+          @rioaldie <Copyright sx={{color: '#c4c4c4'}} /> 2022
         </Typography>
         <Typography
           variant="subtitle1"
@@ -13,9 +13,17 @@ export default function Footer(){
           color="text.secondary"
           component="p"
         >
-          Something here to give the footer a purpose!
+          All Reserved
         </Typography>
-        <Copyright />
+        <Typography
+          variant="subtitle1"
+          align="center"
+          color="text.secondary"
+          component="p"
+        >
+          Website Ini dibuat untuk Tugas Akhir Manajemen Inovasi
+        </Typography>
+        
       </Box>
     </>)
 }

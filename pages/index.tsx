@@ -15,18 +15,13 @@ const DarkTheme = createTheme({
   }
 })
 const Home: NextPage = () => {
-  const getLastedMovieList = useCallback( async ()=>{
-    const data = await GetLastedMovie();
-  },[GetLastedMovie]);
-
-  useEffect(()=>{
-    getLastedMovieList();
-  },[])
+  
   return (
    <><CssBaseline/>
       <ThemeProvider theme={DarkTheme}>
         <Head>
-        <title> Getmovie</title>
+        <title> GetMovies</title>
+        <link rel="icon" type="image/x-icon" href="/image/gmovie-logo.png"></link>
         </Head>
         <Navbar/>
         <Body/>
