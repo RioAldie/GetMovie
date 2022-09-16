@@ -3,12 +3,10 @@ import {
   CssBaseline,
   ThemeProvider,
 } from '@mui/material';
-import type { NextPage } from 'next';
 import Head from 'next/head';
-import { useCallback, useEffect } from 'react';
-import Body from '../components/organisms/body';
+import React from 'react';
+import SearchBody from '../components/organisms/body/search.body';
 import Navbar from '../components/organisms/navbar';
-import { GetLastedMovie } from '../services/movie';
 
 const DarkTheme = createTheme({
   palette: {
@@ -18,7 +16,7 @@ const DarkTheme = createTheme({
     },
   },
 });
-const Home: NextPage = () => {
+const Search = () => {
   return (
     <>
       <CssBaseline />
@@ -32,10 +30,9 @@ const Home: NextPage = () => {
           ></link>
         </Head>
         <Navbar />
-        <Body />
+        <SearchBody />
       </ThemeProvider>
     </>
   );
 };
-
-export default Home;
+export default Search;
