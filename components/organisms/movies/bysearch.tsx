@@ -12,14 +12,19 @@ import {
   GetMovieBySearch,
 } from '../../../services/movie';
 import MovieItem from '../../moleculs/Movieitem';
+import Loading from '../../utilities/loading';
 
 export default function BySearch() {
   const [movies, setMovies] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const { query } = useContext(QueryCtx);
   const getMovieListBySearchQuery = useCallback(
     async (query: string) => {
-      const data = await GetMovieBySearch(query);
-      setMovies(data.results);
+      setIsLoading(true);
+      const data = await GetMovieBySearch(query)
+        .catch((err) => console.log(err))
+        .finally(() => setIsLoading(false));
+      return setMovies(data.results);
     },
     []
   );
@@ -35,6 +40,8 @@ export default function BySearch() {
         maxWidth="md"
         id="movies"
       >
+        {isLoading ? <Loading /> : null}
+
         <Typography variant="h5" color={'primary'} sx={{ mb: 10 }}>
           Search / {query}
         </Typography>

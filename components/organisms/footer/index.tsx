@@ -1,11 +1,20 @@
-import { Copyright } from "@mui/icons-material";
-import { Box, Typography } from "@mui/material";
+import { Copyright } from '@mui/icons-material';
+import { Box, Typography } from '@mui/material';
 
-export default function Footer(){
-    return(<>
-        <Box sx={{ bgcolor: 'background.paper', p: 6 }} component="footer">
-        <Typography variant="h6" align="center" gutterBottom color="text.primary">
-          @rioaldie <Copyright sx={{color: '#c4c4c4'}} /> 2022
+export default function Footer() {
+  return (
+    <>
+      <Box
+        sx={{ bgcolor: 'background.paper', p: 6 }}
+        component="footer"
+      >
+        <Typography
+          variant="h6"
+          align="center"
+          gutterBottom
+          color="text.primary"
+        >
+          @rioaldie <Copyright sx={{ color: '#c4c4c4' }} /> 2022
         </Typography>
         <Typography
           variant="subtitle1"
@@ -15,15 +24,7 @@ export default function Footer(){
         >
           All Reserved
         </Typography>
-        <Typography
-          variant="subtitle1"
-          align="center"
-          color="text.secondary"
-          component="p"
-        >
-          Website Ini dibuat untuk Tugas Akhir Manajemen Inovasi
-        </Typography>
-        
       </Box>
-    </>)
+    </>
+  );
 }

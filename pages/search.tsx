@@ -4,9 +4,10 @@ import {
   ThemeProvider,
 } from '@mui/material';
 import Head from 'next/head';
-import React from 'react';
+import React, { useState } from 'react';
 import SearchBody from '../components/organisms/body/search.body';
 import Navbar from '../components/organisms/navbar';
+import Loading from '../components/utilities/loading';
 
 const DarkTheme = createTheme({
   palette: {
@@ -17,6 +18,8 @@ const DarkTheme = createTheme({
   },
 });
 const Search = () => {
+  const [isLoading, setIsLoading] = useState(false);
+
   return (
     <>
       <CssBaseline />
@@ -30,6 +33,8 @@ const Search = () => {
           ></link>
         </Head>
         <Navbar />
+        {isLoading ? <Loading /> : null}
+
         <SearchBody />
       </ThemeProvider>
     </>
