@@ -16,6 +16,8 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { useContext, useState } from 'react';
 import { MovieCtx } from '../../../services/context/MovieContext';
 import SearchMovie from '../search';
+import IconButton from '@mui/material/IconButton';
+import SearchIcon from '@mui/icons-material/Search';
 import Link from 'next/link';
 
 const ButtonStyled = styled(Button)({
@@ -27,6 +29,7 @@ const ButtonStyled = styled(Button)({
 });
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [isSearch, setIsSearch] = useState(false);
   const { action, setAction } = useContext(MovieCtx);
   const genres = [
     'action',
@@ -46,6 +49,7 @@ export default function Navbar() {
             backgroundColor: '#100F0F',
             display: 'flex',
             justifyContent: 'space-between',
+            alignItems: 'center',
           }}
         >
           <Image
@@ -53,14 +57,56 @@ export default function Navbar() {
             height={30}
             width={67}
           />
-          <SearchMovie />
+          <Box
+            sx={{ display: { xs: 'none', sm: 'none', md: 'flex' } }}
+          >
+            <SearchMovie />
+          </Box>
+
           <Box
             sx={{
               display: { sm: 'block', md: 'none' },
               alignItems: 'center',
             }}
           >
-            <MenuIcon onClick={(e) => setOpen(true)} />
+            <IconButton
+              size="large"
+              aria-label="search"
+              color="inherit"
+              onClick={(e) => setIsSearch(true)}
+            >
+              <SearchIcon />
+            </IconButton>
+            <Menu
+              id="demo-positioned-menu"
+              aria-labelledby="demo-positioned-button"
+              open={isSearch}
+              onClose={(e) => setIsSearch(false)}
+              anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'left',
+              }}
+              sx={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                width: '100%',
+              }}
+            >
+              <SearchMovie />
+            </Menu>
+            <IconButton
+              size="large"
+              aria-label="search"
+              color="inherit"
+              onClick={(e) => setOpen(true)}
+            >
+              <MenuIcon />
+            </IconButton>
             <Menu
               id="demo-positioned-menu"
               aria-labelledby="demo-positioned-button"

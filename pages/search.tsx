@@ -6,6 +6,7 @@ import {
 import Head from 'next/head';
 import React, { useState } from 'react';
 import SearchBody from '../components/organisms/body/search.body';
+import Footer from '../components/organisms/footer';
 import Navbar from '../components/organisms/navbar';
 import Loading from '../components/utilities/loading';
 
@@ -36,6 +37,7 @@ const Search = () => {
         {isLoading ? <Loading /> : null}
 
         <SearchBody />
+        <Footer />
       </ThemeProvider>
     </>
   );

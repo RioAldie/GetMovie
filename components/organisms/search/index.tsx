@@ -65,9 +65,16 @@ const SearchMovie = () => {
   return (
     <Box
       sx={{
-        width: '400px',
+        width: {
+          xs: '346px',
+          sm: '400px',
+          md: '400px',
+        },
         display: 'flex',
         flexDirection: 'row',
+        p: {
+          xs: '10px',
+        },
       }}
     >
       <Search>
